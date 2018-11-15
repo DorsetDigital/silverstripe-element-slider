@@ -1,0 +1,34 @@
+{
+  "name": "dorsetdigital/silverstripe-element-slider",
+  "description": "Adds an image slider element",
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "silverstripe",
+    "gallery",
+    "images"
+  ],
+  "authors": [
+    {
+      "name": "Tim Burt - Dorset Digital Ltd",
+      "email": "tim@dorset-digital.net"
+    }
+  ],
+  "require": {
+    "silverstripe/cms": "^4.0",
+    "silverstripe/vendor-plugin": "^1.0",
+    "bummzack/sortablefile": "^2.0",
+    "dnadesign/silverstripe-elemental": "^3.0",
+    "symbiote/silverstripe-gridfieldextensions": "^3"
+  },
+  "autoload": {
+    "psr-4": {
+      "DorsetDigital\\Elements\\Slider\\": "src/"
+    }
+  },
+  "extra": {
+    "expose": [
+      "client/dist"
+    ]
+  }
+}
