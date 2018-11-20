@@ -1,7 +1,9 @@
 <?php
+
 namespace DorsetDigital\Elements\Slider\DataObjects;
 
 use DorsetDigital\Elements\Slider\Models\Slider;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 
@@ -14,6 +16,7 @@ class Slide extends DataObject
 
     private static $db = [
         'Title' => 'Varchar(255)',
+        'Sort' => 'Int'
     ];
 
     private static $belongs_many_many = [
@@ -27,5 +30,19 @@ class Slide extends DataObject
     private static $owns = [
         'SlideImage'
     ];
+
+    private static $default_sort = 'Sort DESC';
+
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+        $fields->removeByName('Sort');
+        $fields->addFieldToTab('Root.Main',
+            UploadField::create('SlideImage')
+                ->setAllowedFileCategories('image/supported')
+                ->setFolderName('sliders'));
+
+        return $fields;
+    }
 
 }
