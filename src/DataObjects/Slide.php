@@ -5,6 +5,7 @@ namespace DorsetDigital\Elements\Slider\DataObjects;
 use DorsetDigital\Elements\Slider\Models\Slider;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataObject;
 
 class Slide extends DataObject
@@ -16,7 +17,8 @@ class Slide extends DataObject
 
     private static $db = [
         'Title' => 'Varchar(255)',
-        'Sort' => 'Int'
+        'Sort' => 'Int',
+        'TextColour' => 'Varchar(10)'
     ];
 
     private static $belongs_many_many = [
@@ -37,6 +39,8 @@ class Slide extends DataObject
     {
         $fields = parent::getCMSFields();
         $fields->removeByName('Sort');
+        $fields->addFieldToTab('Root.Main', DropdownField::create('TextColour')
+        ->setSource(['light' => 'Light Text', 'dark' => 'Dark Text']));
         $fields->addFieldToTab('Root.Main',
             UploadField::create('SlideImage')
                 ->setAllowedFileCategories('image/supported')
