@@ -18,7 +18,9 @@ class Slide extends DataObject
     private static $db = [
         'Title' => 'Varchar(255)',
         'Sort' => 'Int',
-        'TextColour' => 'Varchar(10)'
+        'TextColour' => 'Varchar(10)',
+        'PositionVertical' => 'Varchar(10)',
+        'PositionHorizontal' => 'Varchar(10)'
     ];
 
     private static $belongs_many_many = [
@@ -39,12 +41,21 @@ class Slide extends DataObject
     {
         $fields = parent::getCMSFields();
         $fields->removeByName('Sort');
-        $fields->addFieldToTab('Root.Main', DropdownField::create('TextColour')
-        ->setSource(['light' => 'Light Text', 'dark' => 'Dark Text']));
+        $fields->addFieldToTab('Root.Main',
+            DropdownField::create('TextColour')
+                ->setTitle(_t(__CLASS__ . '.TextColour', 'Text Colour'))
+            ->setSource([
+                'light' => _t(__CLASS__ . '.LightText', 'Include in footer menu'),
+                'dark' => 'Dark Text'
+            ]));
         $fields->addFieldToTab('Root.Main',
             UploadField::create('SlideImage')
                 ->setAllowedFileCategories('image/supported')
                 ->setFolderName('sliders'));
+        $fields->addFieldToTab('Root.Main', DropdownField::create('HorizontalPosition')
+            ->setSource(['left' => 'Left', 'Centre' => 'Centre', 'right' => 'Right']));
+        $fields->addFieldToTab('Root.Main', DropdownField::create('VerticalPosition')
+            ->setSource(['top' => 'Top', 'middle' => 'Middle', 'Bottom' => 'bottom']));
 
         return $fields;
     }
