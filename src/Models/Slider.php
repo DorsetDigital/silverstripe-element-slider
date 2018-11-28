@@ -52,13 +52,19 @@ class Slider extends BaseElement
                 ->addComponent(GridFieldOrderableRows::create()));
 
         $typeSelect = DropdownField::create('SliderType')
-            ->setSource(['fade' => 'Fader', 'slide' => 'Slider']);
+            ->setTitle(_t(__CLASS__ . '.SliderType', 'Slider Type'))
+            ->setSource([
+                'fade' => _t(__CLASS__ . '.Fader', 'Fader'),
+                'slide' => _t(__CLASS__ . '.Slider', 'Slider')
+            ]);
 
         $fields->addFieldsToTab('Root.Main', [
             TextField::create('SlideDelay')
-                ->setDescription('Delay between slide changes (ms) - defaults to 3500'),
+                ->setTitle(_t(__CLASS__ . '.SlideDelay', 'Slide Delay'))
+                ->setDescription(_t(__CLASS__ . '.SlideDelayDesc', 'Delay between slide changes (ms) - defaults to 3500')),
             TextField::create('TransitionSpeed')
-                ->setDescription('Transition speed of slides (ms)'),
+                ->setTitle(_t(__CLASS__ . '.TransitionSpeed', 'Transition Speed'))
+                ->setDescription(_t(__CLASS__ . '.TransitionSpeedDesc', 'Transition speed of slides (ms)')),
             $typeSelect,
             $grid
         ]);

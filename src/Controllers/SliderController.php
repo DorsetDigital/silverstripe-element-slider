@@ -13,10 +13,18 @@ class SliderController extends ElementController
         Requirements::css('dorsetdigital/silverstripe-element-slider:client/dist/slider.css');
 
         if ($this->Slides()->count() > 1) {
-            Requirements::javascript('dorsetdigital/silverstripe-element-slider:client/dist/tiny-slider/tiny-slider.js',
-                ['defer' => true]);
-            Requirements::javascript('dorsetdigital/silverstripe-element-slider:client/dist/slider.min.js',
-                ['defer' => true]);
+            Requirements::javascript('dorsetdigital/silverstripe-element-slider:client/dist/tiny-slider/tiny-slider.js');
+
+            Requirements::javascriptTemplate(
+                'dorsetdigital/silverstripe-element-slider:client/dist/slider.min.js',
+                [
+                    'ID' => $this->ID,
+                    'TransitionSpeed' => $this->TransitionSpeed,
+                    'DelaySpeed' => $this->SlideDelay,
+                    'SliderType' => ($this->SliderType == 'fade') ? 'gallery' : 'carousel'
+                ]
+            );
+
         }
     }
 }
