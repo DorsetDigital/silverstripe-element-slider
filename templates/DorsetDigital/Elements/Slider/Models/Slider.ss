@@ -3,7 +3,7 @@
         <h2 class="gallerytitle">$Title</h2>
     </div>
 <% end_if %>
-<div class="row py-4">
+<div class="slider__holder">
     <% if $Slides.Count > 1 %>
         <div class="image-slider slider-element-$ID slider-mode-$SliderType">
             <% loop $Slides %>
