@@ -16,6 +16,7 @@
       margin: 0;
       padding: 0;
       max-width: 100%;
+      width: 100%;
     }
 
     p.slider_title {
@@ -61,7 +62,7 @@
 
       &.vert-middle {
         &.horiz-centre {
-          transform: translate(-50%,-50%);
+          transform: translate(-50%, -50%);
         }
       }
 
