@@ -18,6 +18,7 @@ class Slider extends BaseElement
     private static $description = 'Image slider block';
     private static $table_name = 'DorsetDigital_Elements_Slider';
     private static $controller_class = SliderController::class;
+    private static $inline_editable = false;
 
     private static $db = [
         'SlideDelay' => 'Int',
