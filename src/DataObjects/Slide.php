@@ -41,6 +41,10 @@ class Slide extends DataObject
     ];
 
     private static $default_sort = 'Sort';
+    private static $summary_fields = [
+        'Title' => 'Title',
+        'SlideImage.CMSThumbnail' => 'Slide Image'
+    ];
 
     public function getCMSFields()
     {
