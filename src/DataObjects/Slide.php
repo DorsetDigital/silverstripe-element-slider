@@ -52,6 +52,11 @@ class Slide extends DataObject
         $fields->removeByName('Sort');
 
         $fields->addFieldToTab('Root.Main',
+            UploadField::create('SlideImage')
+                ->setAllowedFileCategories('image/supported')
+                ->setFolderName('sliders'));
+
+        $fields->addFieldToTab('Root.Main',
             TextareaField::create('Title')
                 ->setTitle(_t(__CLASS__ . '.Title', 'Slide Caption'))
         );
@@ -73,11 +78,6 @@ class Slide extends DataObject
                     'medium' => _t(__CLASS__ . '.Medium', 'Medium'),
                     'large' => _t(__CLASS__ . '.Large', 'Large')
                 ]));
-
-        $fields->addFieldToTab('Root.Main',
-            UploadField::create('SlideImage')
-                ->setAllowedFileCategories('image/supported')
-                ->setFolderName('sliders'));
 
         $fields->addFieldToTab('Root.Main',
             DropdownField::create('PositionHorizontal')
